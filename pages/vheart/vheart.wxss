@@ -1,0 +1,26 @@
+/* pages/vheart/vheart.wxss */
+
+.key{
+  /* width: 90%; */
+  margin: 10px 10px;
+  text-align: left;
+}
+
+ .input{
+   height: 40px;
+   width: 80%;
+   margin: 5px 5px 10px 2px;
+  border: 1px solid gray
+}
+.btn{
+  height: 40px;
+  margin: 5px 5px 2px 2px;
+  text-align: center;
+  font-size: 30rpx;
+  width: 20%;
+  background-color: goldenrod
+}
+.data{
+  margin: 5px 5px;
+  background-color:aliceblue;
+}

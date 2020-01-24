@@ -1,0 +1,27 @@
+<!--pages/vheart/vheart.wxml-->
+<view style="text-align: center">
+<text>{{title}}</text>
+</view>
+<view style="display:flex;" class="key">
+<input class="input" name="keyWord" placeholder="请输入编号"  bindinput="keyWordInput"/>
+<button class="btn" bindtap="query_info">查询</button>
+</view>
+
+<view wx:if="{{res_data.length>0}}">
+  <block wx:for="{{res_data}}">
+    <view class="data">
+      <view>设备编号：{{item.number}}</view>
+      <view>设备mac：{{item.mac}}</view>
+      <view>设备状态：{{item.isonline}}</view>
+      <view>心跳时间：{{item.time}}</view>
+      <view>设备版本：{{item.version}}</view>
+      <view>启动时间：{{item.stime}}</view>
+    </view>
+  </block>
+</view>
+<view wx:else style="text-align: center">
+<text >没有更多数据！</text>
+</view>
+
+
+
