@@ -1,1 +1,35 @@
 /* pages/boxheart/boxheart.wxss */
+
+.key {
+  height: 30px;
+  margin: 0px 10px;
+  border: 1px solid gray;
+}
+
+.input {
+  width: 90%;
+  margin: 0px 10px;
+  text-align: left;
+}
+
+.icon {
+  width: 10%;
+  margin-top: 0px;
+}
+
+#img {
+  margin: 1px 1px;
+}
+
+.btn {
+  width: 30%;
+  margin-top: 20rpx;
+  background-color: beige;
+  /* color: white; */
+  border-radius: 98rpx;
+}
+
+.data {
+  margin: 5px 5px;
+  background-color: aliceblue;
+}

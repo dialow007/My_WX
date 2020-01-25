@@ -1,2 +1,31 @@
 <!--pages/boxheart/boxheart.wxml-->
-<text>pages/boxheart/boxheart.wxml</text>
+<!--pages/vheart/vheart.wxml-->
+
+<view class="key" style="display:flex;">
+  <view class="input">
+    <input name="keyWord" placeholder="请输入或者扫描uuid" bindinput="keyWordInput" value="{{box_id}}"></input>
+  </view>
+  <view class="icon">
+    <image id="img" style='width:90% ' src="../../img/resizeApi.png" mode="widthFix" bindtap='getScancode'></image>
+  </view>
+
+  <!-- <icon class="icon" type="search" size="30" bindtap='getScancode' /> -->
+
+</view>
+<view>
+  <button class="btn" bindtap="query_info">查询</button>
+</view>
+
+<view wx:if="{{res_data.length>0}}">
+  <block wx:for="{{res_data}}">
+    <view class="data">
+      <view>设备编号：{{item.uuid}}</view>
+      <view>设备mac：{{item.mac}}</view>
+      <view>设备状态：{{item.isonline}}</view>
+      <view>心跳时间：{{item.time}}</view>
+    </view>
+  </block>
+</view>
+<view wx:else style="text-align: center">
+  <text>没有更多数据！</text>
+</view>

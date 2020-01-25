@@ -68,7 +68,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  
+
   keyWordInput: function(e) {
     this.data.box_id = e.detail.value;
   },
@@ -90,7 +90,15 @@ Page({
           that.setData({
             res_data: value.data
           })
-        }
+        },
+        fail: function() {
+          wx.showToast({
+            icon: 'none',
+            title: '服务异常！',
+            duration: 2000
+          })
+        },
+
 
       })
     } else {
