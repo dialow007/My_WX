@@ -1,0 +1,6 @@
+/* pages/playlist/playlist.wxss */
+
+#play_btn{
+  margin: 5px auto;
+  width: 50%
+}

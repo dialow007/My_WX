@@ -23,13 +23,18 @@
 
 .btn {
   width: 30%;
-  margin-top: 20rpx;
-  background-color: beige;
-  /* color: white; */
-  border-radius: 98rpx;
+  margin: 5px auto;
+
 }
 
 .data {
   margin: 5px 5px;
   background-color: aliceblue;
+}
+
+#uuid{
+  margin: 5px 20px;
+  border: 1px solid gray;
+    border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }

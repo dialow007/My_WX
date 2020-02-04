@@ -1,0 +1,28 @@
+<!--pages/play/play.wxml-->
+<!-- <view container>
+  <view>
+    <text style="font-size: 20px;">视频地址</text>
+  </view>
+  <view style="margin:10px auto">
+    <text style="color:blue;">{{path}}</text>
+  </view>
+  <view>
+    <video src="{{path}}" autoplay="true"></video>
+  </view>
+</view> -->
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-blue"></text>视频地址(点击视频地址测试连接是否正常)
+    </view>
+  </view>
+
+  <view class="padding-sm">
+    <view class="text-blue text-center">
+      <text bindtap="test_url" data-url='{{path}}'>{{path}}</text>
+    </view>
+  </view>
+
+<view class="container">
+  <video src="{{path}}" autoplay="true"></video>
+</view>

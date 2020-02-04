@@ -1,0 +1,4 @@
+/* pages/play/play.wxss */
+.main{
+  margin: 10px auto
+}

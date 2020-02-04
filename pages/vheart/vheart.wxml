@@ -1,27 +1,55 @@
 <!--pages/vheart/vheart.wxml-->
-<view style="display:flex;" class="key">
-  <view class="input">
-    <input name="keyWord" placeholder="请输入编号" bindinput="keyWordInput" />
+<view class="cu-bar search bg-white">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="请输入设备编号" confirm-type="search" bindinput="keyWordInput"></input>
   </view>
-  <view class="btn">
-    <button id="btn" bindtap="query_info">查询</button>
+  <view class="action">
+    <button class="cu-btn bg-gradual-green shadow-blur round" style="width:80px" bindtap="query_info">查询</button>
   </view>
-
-
 </view>
 
-<view wx:if="{{res_data.length>0}}">
-  <block wx:for="{{res_data}}">
-    <view class="data">
-      <view>设备编号：{{item.number}}</view>
-      <view>设备mac：{{item.mac}}</view>
-      <view>设备状态：{{item.isonline}}</view>
-      <view>心跳时间：{{item.time}}</view>
-      <view>设备版本：{{item.version}}</view>
-      <view>启动时间：{{item.stime}}</view>
+<block wx:for="{{res_data}}" wx:key="key" style="margin: 5px auto;">
+  <view class="weui-form-preview">
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">设备编号：</view>
+        <view class="weui-form-preview__value">{{item.number}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">关联企业：</view>
+        <view class="weui-form-preview__value">{{item.org}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">设备mac：</view>
+        <view class="weui-form-preview__value">{{item.mac}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">设备状态：</view>
+        <view class="weui-form-preview__value" style="color:{{_color[item.isonline]}}">{{item.isonline}} </view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">心跳时间：</view>
+        <view class="weui-form-preview__value">{{item.time}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">设备版本：</view>
+        <view class="weui-form-preview__value">{{item.version}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">启动时间：</view>
+        <view class="weui-form-preview__value">{{item.stime}}</view>
+      </view>
+      <view class="weui-form-preview__item" wx:if="{{item.video.length>0}}">
+        <view class="weui-form-preview__label">视频列表：</view>
+        <!-- <view class="weui-form-preview__value"> -->
+        <button class="cu-btn  bg-green shadow" data-video="{{item.video}}" bindtap="play_video" id="play_btn"> 查看</button>
+        <!-- </view> -->
+      </view>
     </view>
-  </block>
-</view>
-<view wx:else style="text-align: center">
-  <text>没有更多数据！</text>
+  </view>
+</block>
+
+<view style="text-align: center ;font-family: '微软雅黑';font-size: 15px;">
+  <text>{{data_res}}</text>
 </view>

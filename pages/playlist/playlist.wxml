@@ -1,0 +1,29 @@
+<!--pages/playlist/playlist.wxml-->
+<!-- <view style="margin:0px auto;  text-align: center">
+<text style="color:blue; margin:10px auto">点击播放视频</text>
+<view class="page__bd page__bd_spacing">
+  <block wx:for="{{video_list}}">
+    <view >
+      <button class="weui-btn" type="primary" data-video="{{item.video_url}}" bindtap="play_video" id="play_btn"> {{item.devName}}</button>
+    </view>
+  </block>
+
+</view>
+</view> -->
+
+
+
+<view class="cu-list  menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+<block wx:for="{{video_list}}">
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+    <view class="content">
+      <text class="cuIcon-videofill text-grey"></text>
+      <text class="text-grey">{{item.devName}}</text>
+    </view>
+    <view class="action">
+      <button class="cu-btn  bg-green shadow" data-video="{{item.video_url}}" bindtap="play_video" style="width:100px">
+        <text class="cuIcon-videofill"></text> 播放</button>
+    </view>
+  </view>
+  </block>
+</view>

@@ -9,7 +9,10 @@ Page({
     res_data: [],
     box_id: "",
     title: "小V设备",
-    baseUrl: app.globalData.erpUrl
+    baseUrl: app.globalData.erpUrl,
+    v_list:[],
+    data_res:"暂无数据",
+    _color: { "在线": "#39b54a", "离线": "#e54d42" }
 
   },
 
@@ -52,6 +55,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    wx.showNavigationBarLoading() ;
+    this.query_info();
 
   },
 
@@ -78,6 +83,7 @@ Page({
     var url = this.data.baseUrl;
     var that = this;
     if (id != "") {
+      wx.showToast({ title: '加载中', icon: 'loading', duration: 10000 });
       wx.request({
         url: url + '/test',
         method: "POST",
@@ -87,27 +93,52 @@ Page({
         success: function(res) {
           var value = res.data;
           // console.log(value.data);
-          that.setData({
-            res_data: value.data
-          })
+          if (value.data.length>0){
+            that.setData({
+              res_data: value.data,
+              data_res:"没有更多数据了"
+            });
+          }
+          else{
+            
+            that.setData({
+              res_data: value.data,
+              data_res: "未查询到数据"
+            });
+          }
+          wx.hideToast();
         },
         fail: function() {
           wx.showToast({
             icon: 'none',
-            title: '服务异常！',
+            title: '服务异常',
             duration: 2000
           })
         },
+        complete: function () {
+          wx.hideNavigationBarLoading();
+          wx.stopPullDownRefresh();
+        }
 
 
       })
     } else {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
       wx.showToast({
         icon: 'none', //提示图标
-        title: '请输入编号',
+        title: '请输入设备编号',
         duration: 3000 //提示的时间毫秒
       })
     }
 
+  },
+  play_video: function (e) {
+    var v_list = e.currentTarget.dataset.video;
+    // console.log(v_list);
+    v_list = JSON.stringify(v_list);
+    wx.navigateTo({
+      url: '../playlist/playlist?path=' + v_list
+    })
   }
 })

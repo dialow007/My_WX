@@ -1,5 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "魔盒设备信息"
-
+  "navigationBarTitleText": "魔盒设备信息",
+  "enablePullDownRefresh": true
 }

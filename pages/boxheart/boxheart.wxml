@@ -1,31 +1,53 @@
 <!--pages/boxheart/boxheart.wxml-->
-<!--pages/vheart/vheart.wxml-->
-
-<view class="key" style="display:flex;">
-  <view class="input">
-    <input name="keyWord" placeholder="请输入或者扫描uuid" bindinput="keyWordInput" value="{{box_id}}"></input>
+<!-- <view class="weui-cell  weui-cell_vcode" id="uuid" style="height:40px">
+  <view class="weui-cell__bd">
+    <input id="input" class="weui-input" placeholder="请输入或者扫描uuid" bindinput="keyWordInput" value="{{box_id}}" />
   </view>
-  <view class="icon">
-    <image id="img" style='width:90% ' src="../../img/resizeApi.png" mode="widthFix" bindtap='getScancode'></image>
+  <view class="weui-cell__ft">
+    <image class="weui-vcode-img" src="../../img/resizeApi.png" style="height:40px;width:35px" bindtap='getScancode'></image>
+  </view>
+</view> -->
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="请扫描uuid" confirm-type="search" bindinput="keyWordInput" value="{{box_id}}"></input>
+      <image class="weui-vcode-img" src="../../img/resizeApi.png" style="height:30px;width:30px;border-radius: 10px" bindtap='getScancode' mode="widthFix"></image>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-gradual-green shadow-blur round" style="width:60px" bindtap="query_info">查询</button>
+    </view>
   </view>
 
-  <!-- <icon class="icon" type="search" size="30" bindtap='getScancode' /> -->
 
-</view>
-<view>
-  <button class="btn" bindtap="query_info">查询</button>
-</view>
+<!-- <view class="weui-form__opr-area" style="margin-bottom: 10px;">
+  <button type="primary" style="width:100px;" bindtap="query_info">查询</button>
+</view> -->
 
-<view wx:if="{{res_data.length>0}}">
-  <block wx:for="{{res_data}}">
-    <view class="data">
-      <view>设备编号：{{item.uuid}}</view>
-      <view>设备mac：{{item.mac}}</view>
-      <view>设备状态：{{item.isonline}}</view>
-      <view>心跳时间：{{item.time}}</view>
+
+  <block wx:for="{{res_data}}" style="margin: 5px auto;">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">设备编号：</view>
+          <view class="weui-form-preview__value">{{item.uuid}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">设备mac：</view>
+          <view class="weui-form-preview__value">{{item.mac}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">设备状态：</view>
+          <view class="weui-form-preview__value" style="color:{{_color[item.isonline]}}"><text>{{item.isonline}}</text> </view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">心跳时间：</view>
+          <view class="weui-form-preview__value">{{item.time}}</view>
+        </view>
+      </view>
+
     </view>
   </block>
-</view>
-<view wx:else style="text-align: center">
-  <text>没有更多数据！</text>
+
+<view  style="text-align: center ;font-family: '微软雅黑';font-size: 15px;">
+  <text>{{data_res}}</text>
 </view>

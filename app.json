@@ -3,13 +3,17 @@
     "pages/index/index",
     "pages/vheart/vheart",
     "pages/boxheart/boxheart",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/ui/ui",
+    "pages/playlist/playlist",
+    "pages/play/play"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "麦子~",
+    "navigationBarBackgroundColor": "#0081ff",
+    "navigationBarTitleText": "~麦子~",
     "navigationBarTextStyle": "black"
+
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

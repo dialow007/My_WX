@@ -14,6 +14,36 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+var sendRequest = function (url, method, data = {}, header = {}) {
+  var _header = "";
+  if (header==null){
+    _header = { 'content - type': 'application/json'}
+  }
+  else{
+    _header = header
+  }
+  var promise = new Promise(function (resolve, reject) {
+    wx.request({
+      url: url,
+      data: data,
+      method: method,
+      header: _header,
+      success: function (data) {
+        //做一些统一处理操作，例如401验证
+
+        //resolve用于具体调用中
+        resolve(data);
+      },
+      fail: function (data) {
+        reject(data);
+      }      
+    })
+  })
+
+  return promise
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  sendRequest: sendRequest
 }
